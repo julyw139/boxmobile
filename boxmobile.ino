@@ -118,7 +118,7 @@ void fullStop()
 int cooldown = 50;
 //adjust the values behind the plus sign for each part of the track
 int line1 = SETUP_TIME + 700; //a1a2
-int turn1 = line1 + 70 + cooldown; //a2 to a3
+int turn1 = line1 + 150 + cooldown; //a2 to a3 //70 with full battery
 int line2 = turn1 + 500; //a3
 int turn2 = line2 + 70; //a3 to a4
 int line3 = turn2 + 1500; //a4a5
@@ -133,39 +133,39 @@ void autoMode()
   if(mil < line1)
   {
     //full speed forward
-    leftForward(205);
+    leftForward(170);
     rightForward(255);
   }
   else if(mil < turn1)
-  {
+  {/*
     if(mil < line1 + cooldown)
     {
       //stop
-      fullstop();
+      fullStop();
     }
     else
-    {
+    {*/
       if(LEFT)
       {
         //turn left
-        leftBackward(150);
-        rightForward(200);
+        leftBackward(100);
+        rightForward(255);
       }
       else if(RIGHT)
       {
         //turn right
         leftForward(150);
-        rightBackward(200);
+        rightBackward(255);
       }
-    }
+    //}
   }
-  /*
   else if(mil < line2)
   {
     //full speed forward
-    leftForward(205);
+    leftForward(170);
     rightForward(255);
   }
+  /*
   else if(mil < turn2)
   {
     if(LEFT)
@@ -184,7 +184,7 @@ void autoMode()
   else if(mil < line3)
   {
     //full speed forward
-    leftForward(205);
+    leftForward(170);
     rightForward(255);
   }
   else if(mil < turn3)
@@ -205,31 +205,31 @@ void autoMode()
   else if(mil < line4)
   {
     //full speed forward
-    leftForward(205);
+    leftForward(170);
     rightForward(255);
   }
   else if(mil < turn4)
   {
-  if(LEFT)
-  {
-    //turn right
-    leftForward(150);
-    rightBackward(200);
-  }
-  else if(RIGHT)
-  {
-    //turn left
-    leftBackward(150);
-    rightForward(200);
-  }
-  }
+    if(LEFT)
+    {
+      //turn right
+      leftForward(150);
+      rightBackward(200);
+    }
+    else if(RIGHT)
+    {
+      //turn left
+      leftBackward(150);
+      rightForward(200);
+    }
+  }*/
   else
   {
+    fullStop();
     //half speed forward
-    leftForward(155);
-    rightForward(205);
+    //leftForward(155);
+    //rightForward(205);
   }
-  */
 }
 
 void setMode()
@@ -301,10 +301,10 @@ void photoMove(){
   leftForward(150);
   rightBackward(200);
   }
-  else if(photo3 > 750){
+  else if(photo3 > 700){
   //go forward
-  leftForward(205);
-  rightForward(255);
+    leftForward(170);
+    rightForward(255);
   }
   else if(photo2 > 650){
   //turn left
