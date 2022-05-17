@@ -115,17 +115,16 @@ void fullStop()
 }
 
 //times
+int cooldown = 50;
 //adjust the values behind the plus sign for each part of the track
-int line1 = SETUP_TIME + 1500; //a1a2
-int turn1 = line1 + 70; //a2 to a3
+int line1 = SETUP_TIME + 700; //a1a2
+int turn1 = line1 + 70 + cooldown; //a2 to a3
 int line2 = turn1 + 500; //a3
 int turn2 = line2 + 70; //a3 to a4
 int line3 = turn2 + 1500; //a4a5
 int turn3 = line3 + 150; //a5 to a6 //test this
 int line4 = turn3 + 1500; //a6a7
 int turn4 = line4 + 100; //a7 to a8 //test this
-
-int pause = 50;
 
 //adjust the speeds to make the motors turn properly
 void autoMode()
@@ -139,19 +138,28 @@ void autoMode()
   }
   else if(mil < turn1)
   {
-    if(LEFT)
+    if(mil < line1 + cooldown)
     {
-      //turn left
-      leftBackward(150);
-      rightForward(200);
+      //stop
+      fullstop();
     }
-    else if(RIGHT)
+    else
     {
-      //turn right
-      leftForward(150);
-      rightBackward(200);
+      if(LEFT)
+      {
+        //turn left
+        leftBackward(150);
+        rightForward(200);
+      }
+      else if(RIGHT)
+      {
+        //turn right
+        leftForward(150);
+        rightBackward(200);
+      }
     }
   }
+  /*
   else if(mil < line2)
   {
     //full speed forward
@@ -221,6 +229,7 @@ void autoMode()
     leftForward(155);
     rightForward(205);
   }
+  */
 }
 
 void setMode()
