@@ -77,8 +77,11 @@ void loop()
   {
     //LEAVE THIS BLANK
     setMode();
+    //SET MODE HERE
     //May 13, 2022
-    LEFT = true;
+    //LEFT = true;
+    //May 19, 2022
+    RIGHT = true;
   }
   else if(mil<AUTONOMOUS_TIME+SETUP_TIME)
   {
@@ -118,13 +121,13 @@ void fullStop()
 int cooldown = 50;
 //adjust the values behind the plus sign for each part of the track
 int line1 = SETUP_TIME + 700; //a1a2
-int turn1 = line1 + 150 + cooldown; //a2 to a3 //70 with full battery
-int line2 = turn1 + 500; //a3
+int turn1 = line1 + 70; //a2 to a3 //70 with full battery
+int line2 = turn1 + 400; //a3
 int turn2 = line2 + 70; //a3 to a4
-int line3 = turn2 + 1500; //a4a5
-int turn3 = line3 + 150; //a5 to a6 //test this
-int line4 = turn3 + 1500; //a6a7
-int turn4 = line4 + 100; //a7 to a8 //test this
+int line3 = turn2 + 700; //a4a5
+int turn3 = line3 + 100; //a5 to a6 //test this
+int line4 = turn3 + 700; //a6a7
+int turn4 = line4 + 85; //a7 to a8 //test this
 
 //adjust the speeds to make the motors turn properly
 void autoMode()
@@ -133,7 +136,7 @@ void autoMode()
   if(mil < line1)
   {
     //full speed forward
-    leftForward(170);
+    leftForward(205);
     rightForward(255);
   }
   else if(mil < turn1)
@@ -162,7 +165,7 @@ void autoMode()
   else if(mil < line2)
   {
     //full speed forward
-    leftForward(170);
+    leftForward(205);
     rightForward(255);
   }
   /*
@@ -184,7 +187,7 @@ void autoMode()
   else if(mil < line3)
   {
     //full speed forward
-    leftForward(170);
+    leftForward(205);
     rightForward(255);
   }
   else if(mil < turn3)
@@ -205,7 +208,7 @@ void autoMode()
   else if(mil < line4)
   {
     //full speed forward
-    leftForward(170);
+    leftForward(205);
     rightForward(255);
   }
   else if(mil < turn4)
@@ -225,10 +228,10 @@ void autoMode()
   }*/
   else
   {
-    fullStop();
+    //fullStop();
     //half speed forward
-    //leftForward(155);
-    //rightForward(205);
+    leftForward(155);
+    rightForward(205);
   }
 }
 
