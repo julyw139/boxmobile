@@ -168,7 +168,7 @@ void autoMode()
     leftForward(205);
     rightForward(255);
   }
-  /*
+  
   else if(mil < turn2)
   {
     if(LEFT)
@@ -225,13 +225,14 @@ void autoMode()
       leftBackward(150);
       rightForward(200);
     }
-  }*/
+  }
   else
   {
     //fullStop();
+    
     //half speed forward
-    leftForward(155);
-    rightForward(205);
+    leftForward(205);
+    rightForward(255);
   }
 }
 
