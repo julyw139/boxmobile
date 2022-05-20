@@ -76,12 +76,10 @@ void loop()
   if(mil<SETUP_TIME)
   {
     //LEAVE THIS BLANK
-    setMode();
+    //setMode();
     //SET MODE HERE
-    //May 13, 2022
-    //LEFT = true;
-    //May 19, 2022
-    RIGHT = true;
+    LEFT = true;
+    //RIGHT = true;
   }
   else if(mil<AUTONOMOUS_TIME+SETUP_TIME)
   {
@@ -101,7 +99,25 @@ void loop()
 //WRITE CODE IN HERE:  YOUR AUTONOMOUS CODE GOES IN HERE.  PART 1 OF RACE
 void autonomousMode()
 {
-  autoMode();
+  //autoMode();
+  long mil = millis();
+  int time1 = SETUP_TIME + 100;
+  int time2 = time1 + 50;
+  if(RIGHT){
+    time2 = 0;
+  }
+  
+  if(mil < time1){
+    fullSpeedForward();
+  }
+  else if(mil < time2){
+    if(LEFT){
+      turnLeft();
+    }
+    else if(RIGHT){
+      turnRight();
+    }
+  }
 }
 //WRITE CODE IN HERE:  YOUR TELEOP CODE GOES IN HERE.  PART 2 OF RACE
 //you MUST write this method
@@ -115,6 +131,24 @@ void fullStop()
 {
   leftForward(0);
   rightForward(0);
+}
+
+void fullSpeedForward()
+{
+  leftForward(110);
+  rightForward(255);
+}
+
+void turnLeft()
+{
+  leftBackward(20);
+  rightForward(255);
+}
+
+void turnRight()
+{
+  leftForward(100);
+  rightBackward(255);
 }
 
 //times
