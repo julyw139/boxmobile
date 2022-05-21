@@ -99,25 +99,7 @@ void loop()
 //WRITE CODE IN HERE:  YOUR AUTONOMOUS CODE GOES IN HERE.  PART 1 OF RACE
 void autonomousMode()
 {
-  //autoMode();
-  long mil = millis();
-  int time1 = SETUP_TIME + 100;
-  int time2 = time1 + 50;
-  if(RIGHT){
-    time2 = 0;
-  }
-  
-  if(mil < time1){
-    fullSpeedForward();
-  }
-  else if(mil < time2){
-    if(LEFT){
-      turnLeft();
-    }
-    else if(RIGHT){
-      turnRight();
-    }
-  }
+  autoMode();
 }
 //WRITE CODE IN HERE:  YOUR TELEOP CODE GOES IN HERE.  PART 2 OF RACE
 //you MUST write this method
@@ -141,7 +123,7 @@ void fullSpeedForward()
 
 void turnLeft()
 {
-  leftBackward(20);
+  leftBackward(100);
   rightForward(255);
 }
 
@@ -170,7 +152,7 @@ void autoMode()
   if(mil < line1)
   {
     //full speed forward
-    leftForward(205);
+    leftForward(205); //if 110 it moves in a straighter line
     rightForward(255);
   }
   else if(mil < turn1)
