@@ -13,6 +13,9 @@ int rightLED; //YELLOW
 int leftB; //BLUE
 int rightB; //YELLOW
 
+int flexL;
+int flexR;
+
 int photos[] = {A0, A1, A2, A3};
 
 //modes
@@ -33,6 +36,9 @@ void setup()
 
   leftB = 2; //BLUE
   rightB = 8; //YELLOW
+
+  flexL = A4;
+  flexR = A5;
 
   LEFT = false;
   RIGHT = false;
@@ -57,19 +63,15 @@ void loop()
 {
   //DO NOT TOUCH THIS CODE
   long mil = millis();
-
-  /*
-  //testing
-  if(mil<70)
-  {
-    //turn left
-    leftBackward(150);
-    rightForward(200);
-  }
-  else
-  {
-    fullStop();
-  }
+/*
+  int flexL1 = analogRead(flexL);
+  int flexR2 = analogRead(flexR);
+  Serial.print("flexL = ");
+  Serial.print(flexL1);
+  Serial.print("     ");
+  Serial.print("flexR = ");
+  Serial.print(flexR2);
+  Serial.println("     ");
   */
   
   
@@ -93,7 +95,7 @@ void loop()
   {
     teleOpMode();
   }
-  
+ 
 }
 
 //WRITE CODE IN HERE:  YOUR AUTONOMOUS CODE GOES IN HERE.  PART 1 OF RACE
